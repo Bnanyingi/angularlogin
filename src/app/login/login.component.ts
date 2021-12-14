@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm : FormGroup = new FormGroup({});
+  hide = true; 
 
 
   constructor() { }
@@ -22,7 +23,14 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  onLogin(){
-    
+  getControl(formGroup: any, formControlIdentifier: any){
+    return formGroup.get(formControlIdentifier);
+  }
+
+  getControlErrors(formControl: any): any{
+    return Object.keys(formControl?.errors || {});
+  }
+ onLogin(){
+
   }
 }

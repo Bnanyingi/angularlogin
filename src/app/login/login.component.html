@@ -8,7 +8,7 @@
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Email</mat-label>
                     <input type="email" formControlName="email" name="email" matInput required />
-                    <mat-error *ngIf="getControlErrors(getControl(loginForm,'email'))?.required">
+                    <mat-error *ngIf="loginForm.controls['email'].errors">
                         Required email address
                     </mat-error>
                 </mat-form-field>
@@ -22,12 +22,12 @@
                         [attr.aria-label]="'Hide Password'" [attr.aira-pressed]="hide">
                         <mat-icon>{{ hide? 'visibility_off': visibility }}</mat-icon>
                     </button-->
-                    <mat-error *ngIf="getControlErrors(getControl(loginForm,'password'))?.required">
+                    <mat-error *ngIf="loginForm.controls['password'].errors">
                         Password Required
                     </mat-error>
                 </mat-form-field>
             </div>
-            <button mat-flat-button color="primary">Login</button>
+            <button type="Submit" [disabled]="!loginForm.valid" mat-flat-button color="primary">Login</button>
         </form>
     </mat-card-content>
 </mat-card>
